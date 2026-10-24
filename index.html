@@ -37,6 +37,23 @@
                 background: #fff;
                 box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             }
+
+            /* Penyesuaian agar teks di dalam dropdown/tabel tidak terpotong */
+td select {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 0.75rem !important; /* Memperkecil ukuran teks agar pas */
+    padding-left: 0.25rem !important;
+    padding-right: 1.5rem !important; /* Ruang untuk ikon panah dropdown */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Memastikan lebar kolom tabel proporsional dan fleksibel */
+th, td {
+    word-break: break-word;
+}
             .responsive-table thead {
                 display: none;
             }
