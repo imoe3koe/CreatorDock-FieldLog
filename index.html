@@ -179,28 +179,31 @@ th, td {
                 </div>
 
                 <!-- FIELD LOG TABLE -->
-                <div class="overflow-x-auto">
-                    <table class="responsive-table w-full border-collapse border border-slate-300 text-xs">
-                        <thead>
-                            <tr class="bg-slate-900 text-white text-left uppercase text-[10px] tracking-wider">
-                                <th class="p-2 border border-slate-300 w-10 text-center no-print">Status</th>
-                                <th class="p-2 border border-slate-300 w-14 text-center">Scene</th>
-                                <th class="p-2 border border-slate-300 w-28">Equipment</th>
-                                <th class="p-2 border border-slate-300 w-28">File / Roll</th>
-                                <th class="p-2 border border-slate-300 w-32">Timecode In-Out</th>
-                                <th class="p-2 border border-slate-300 w-36">Shot & Movement</th>
-                                <th class="p-2 border border-slate-300">Deskripsi / Poin Lapangan</th>
-                                <th class="p-2 border border-slate-300 w-8 text-center no-print"></th>
-                            </tr>
-                        </thead>
-                        <tbody id="fieldLogTableBody">
-                            <!-- Rows generated via JS -->
-                        </tbody>
-                    </table>
-                </div>
+<div class="overflow-x-auto">
+    <table class="responsive-table w-full border-collapse border border-slate-300 text-xs">
+        <thead>
+            <tr class="bg-slate-900 text-white text-left uppercase text-[10px] tracking-wider">
+                <th class="p-2 border border-slate-300 w-10 text-center no-print">Status</th>
+                <th class="p-2 border border-slate-300 w-14 text-center">Scene</th>
+                <!-- REVISI: Equipment diperkecil dari w-28 ke w-20 -->
+                <th class="p-2 border border-slate-300 w-20">Equipment</th>
+                <th class="p-2 border border-slate-300 w-28">File / Roll</th>
+                <!-- REVISI: Timecode In-Out diperlebar dari w-32 ke w-40 agar teks terlihat penuh -->
+                <th class="p-2 border border-slate-300 w-40">Timecode In-Out</th>
+                <th class="p-2 border border-slate-300 w-36">Shot & Movement</th>
+                <th class="p-2 border border-slate-300">Deskripsi / Poin Lapangan</th>
+                <th class="p-2 border border-slate-300 w-8 text-center no-print"></th>
+            </tr>
+        </thead>
+        <tbody id="fieldLogTableBody">
+            <!-- Rows generated via JS -->
+        </tbody>
+    </table>
+</div>
+
 
                 <footer class="mt-6 pt-3 border-t border-slate-200 text-[11px] text-slate-400 flex justify-between items-center">
-                    <span>CreatorDock FieldLog • Siap Sinkronisasi Adobe Premiere Bin</span>
+                    <span>CreatorDock FieldLog</span>
                     <span id="rowCountInfo">Total Klip: 0</span>
                 </footer>
             </div>
