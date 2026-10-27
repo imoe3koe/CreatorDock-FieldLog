@@ -27,8 +27,8 @@
             }
 
             header.sticky {
-            padding-top: max(env(safe-area-inset-top), 3.5rem) !important;
-        }
+                padding-top: max(env(safe-area-inset-top), 3.5rem) !important;
+            }
             .responsive-table tr {
                 margin-bottom: 1rem;
                 border: 1px solid #cbd5e1;
@@ -39,21 +39,20 @@
             }
 
             /* Penyesuaian agar teks di dalam dropdown/tabel tidak terpotong */
-td select {
-    width: 100% !important;
-    max-width: 100% !important;
-    font-size: 0.75rem !important; /* Memperkecil ukuran teks agar pas */
-    padding-left: 0.25rem !important;
-    padding-right: 1.5rem !important; /* Ruang untuk ikon panah dropdown */
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
+            td select {
+                width: 100% !important;
+                max-width: 100% !important;
+                font-size: 0.75rem !important;
+                padding-left: 0.25rem !important;
+                padding-right: 1.5rem !important;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
 
-/* Memastikan lebar kolom tabel proporsional dan fleksibel */
-th, td {
-    word-break: break-word;
-}
+            th, td {
+                word-break: break-word;
+            }
             .responsive-table thead {
                 display: none;
             }
@@ -124,7 +123,7 @@ th, td {
         
         <!-- TOP TOOLBAR -->
         <header class="no-print sticky top-0 z-40 bg-slate-900 text-white px-3 py-3 pt-20 md:pt-2.5 shadow-md">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2.5">
                     <div class="p-1 bg-slate-800 rounded-lg flex items-center justify-center">
                         <img src="https://creatordock.online/wp-content/uploads/2026/10/Logo-transparan-creatordock-putih.png" alt="CreatorDock Logo" class="h-5 w-auto object-contain">
@@ -155,6 +154,11 @@ th, td {
                     <button onclick="resetProject()" class="bg-slate-800 hover:bg-red-900/50 text-red-400 p-1.5 rounded-lg text-xs transition" title="Reset Proyek">
                         <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                     </button>
+                    <!-- Tombol Panduan (README) di Header -->
+                    <button onclick="toggleGuideModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1.5 rounded-lg text-xs font-medium transition flex items-center gap-1 border border-slate-700" title="Petunjuk Penggunaan">
+                        <i data-lucide="help-circle" class="w-3.5 h-3.5 text-amber-400"></i>
+                        <span class="hidden sm:inline">Panduan</span>
+                    </button>
                 </div>
             </div>
         </header>
@@ -178,31 +182,26 @@ th, td {
                     </div>
                 </div>
 
-<!-- FIELD LOG TABLE -->
-<div class="overflow-x-auto">
-    <table class="responsive-table w-full border-collapse border border-slate-300 text-xs">
-        <thead>
-            <tr class="bg-slate-900 text-white text-left uppercase text-[10px] tracking-wider">
-                <th class="p-2 border border-slate-300 w-10 text-center no-print">Status</th>
-                <th class="p-2 border border-slate-300 w-14 text-center">Scene</th>
-                <!-- KOREKSI: Equipment dinaikkan ke w-24 agar tulisan "Cam" terbaca sempurna -->
-                <th class="p-2 border border-slate-300 w-24">Equipment</th>
-                <th class="p-2 border border-slate-300 w-28">File / Roll</th>
-                <!-- KOREKSI: Tetap w-40 agar Timecode In-Out aman dan tampil semua -->
-                <th class="p-2 border border-slate-300 w-40">Timecode In-Out</th>
-                <!-- KOREKSI: Shot & Movement sedikit disesuaikan ke w-32 untuk berbagi ruang -->
-                <th class="p-2 border border-slate-300 w-32">Shot & Movement</th>
-                <th class="p-2 border border-slate-300">Deskripsi / Poin Lapangan</th>
-                <th class="p-2 border border-slate-300 w-8 text-center no-print"></th>
-            </tr>
-        </thead>
-        <tbody id="fieldLogTableBody">
-            <!-- Rows generated via JS -->
-        </tbody>
-    </table>
-</div>
-
-
+                <!-- FIELD LOG TABLE -->
+                <div class="overflow-x-auto">
+                    <table class="responsive-table w-full border-collapse border border-slate-300 text-xs">
+                        <thead>
+                            <tr class="bg-slate-900 text-white text-left uppercase text-[10px] tracking-wider">
+                                <th class="p-2 border border-slate-300 w-10 text-center no-print">Status</th>
+                                <th class="p-2 border border-slate-300 w-14 text-center">Scene</th>
+                                <th class="p-2 border border-slate-300 w-24">Equipment</th>
+                                <th class="p-2 border border-slate-300 w-28">File / Roll</th>
+                                <th class="p-2 border border-slate-300 w-40">Timecode In-Out</th>
+                                <th class="p-2 border border-slate-300 w-32">Shot & Movement</th>
+                                <th class="p-2 border border-slate-300">Deskripsi / Poin Lapangan</th>
+                                <th class="p-2 border border-slate-300 w-8 text-center no-print"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="fieldLogTableBody">
+                            <!-- Rows generated via JS -->
+                        </tbody>
+                    </table>
+                </div>
 
                 <footer class="mt-6 pt-3 border-t border-slate-200 text-[11px] text-slate-400 flex justify-between items-center">
                     <span>CreatorDock FieldLog</span>
@@ -210,6 +209,94 @@ th, td {
                 </footer>
             </div>
         </main>
+    </div>
+
+    <!-- MODAL PETUNJUK PENGGUNAAN (README) -->
+    <div id="guideModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col border border-gray-100 overflow-hidden">
+            
+            <!-- Header Modal -->
+            <div class="p-4 md:p-5 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center gap-2.5">
+                    <div class="p-2 bg-blue-600 rounded-lg">
+                        <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base md:text-lg">Panduan & Cara Penggunaan</h3>
+                        <p class="text-xs text-slate-400">CreatorDock FieldLog • Standar Broadcast</p>
+                    </div>
+                </div>
+                <button onclick="toggleGuideModal()" class="p-1.5 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Isi Panduan (Scrollable Body) -->
+            <div class="p-5 overflow-y-auto space-y-5 text-xs md:text-sm text-slate-700 leading-relaxed">
+                
+                <!-- Pengenalan -->
+                <div class="bg-blue-50 border border-blue-100 p-3.5 rounded-xl text-blue-900">
+                    <p class="font-semibold mb-1">🎬 Selamat Datang di CreatorDock FieldLog!</p>
+                    <p class="text-xs">Aplikasi pencatatan syuting lapangan standar broadcast internasional untuk mengelola log kamera, drone, timecode, dan bin organizer guna mempercepat kerja editor.</p>
+                </div>
+
+                <!-- 1. Indikator Status Warna -->
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center gap-1.5">
+                        <i data-lucide="circle-dot" class="w-4 h-4 text-blue-600"></i> 1. Arti Indikator Status Klip (Dot Warna)
+                    </h4>
+                    <p class="text-slate-600 mb-2">Klik titik warna di kolom kiri tabel untuk mengubah status klip rekaman:</p>
+                    <ul class="space-y-1.5 pl-2">
+                        <li class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 shrink-0"></span>
+                            <span><strong>Hijau (Pick / Good):</strong> Klip pilihan utama atau *take* terbaik yang siap digunakan oleh editor.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full bg-amber-500 shrink-0"></span>
+                            <span><strong>Orange (Review / Check):</strong> Klip yang memerlukan peninjauan ulang, koreksi audio, atau catatan khusus.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full bg-blue-500 shrink-0"></span>
+                            <span><strong>Biru (Special / B-Roll):</strong> Klip pendukung, B-Roll, drone, atau material arsip penting.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2. Pengisian & Kolom Field Log -->
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center gap-1.5">
+                        <i data-lucide="edit-3" class="w-4 h-4 text-blue-600"></i> 2. Pengisian Kolom & Atribut Klip
+                    </h4>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                        <li><strong>Scene & Equipment:</strong> Masukkan nomor scene dan pilih perangkat perekam (A-Cam, B-Cam, Drone, Audio, dll).</li>
+                        <li><strong>File / Roll & Timecode:</strong> Tulis nama file mentah (contoh: <code>A001_0424.MOV</code>) beserta kisaran timecode masuk dan keluar (*In-Out*).</li>
+                        <li><strong>Shot & Movement:</strong> Pilih jenis ukuran sudut pandang kamera (WS, MS, CU, Establishing, dll).</li>
+                        <li><strong>Deskripsi / Poin Lapangan:</strong> Klik langsung pada kolom deskripsi untuk mengetik ringkasan kejadian atau kutipan wawancara di lokasi syuting.</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Simpan & Buka File Project -->
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center gap-1.5">
+                        <i data-lucide="save" class="w-4 h-4 text-blue-600"></i> 3. Menyimpan & Melanjutkan Proyek
+                    </h4>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                        <li><strong>Tombol Simpan:</strong> Mengunduh seluruh data log lapangan ke perangkat dalam format file <code>.json</code>.</li>
+                        <li><strong>Tombol Buka:</strong> Memuat kembali file <code>.json</code> yang sudah disimpan sebelumnya agar pekerjaan berlanjut tanpa data yang hilang.</li>
+                        <li><strong>Cetak PDF:</strong> Klik tombol <strong>PDF</strong> untuk mencetak atau mengunduh laporan lembar field log bersih tanpa tombol kontrol editor.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="p-3 bg-slate-50 border-t border-slate-200 flex justify-end">
+                <button onclick="toggleGuideModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-medium text-xs transition">
+                    Saya Mengerti, Tutup
+                </button>
+            </div>
+
+        </div>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -348,6 +435,18 @@ th, td {
         function updateRowCount() {
             const count = document.getElementById('fieldLogTableBody').children.length;
             document.getElementById('rowCountInfo').innerText = `Total Klip: ${count}`;
+        }
+
+        /* --- FUNGSI MODAL PANDUAN (GUIDE) --- */
+        function toggleGuideModal() {
+            const modal = document.getElementById('guideModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
         }
 
         // --- FITUR SAVE & OPEN FILE (JSON) ---
